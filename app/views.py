@@ -4,7 +4,10 @@ from django.views import View
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
+        livros = Livro.objects.all()
         return render(request, 'index.html')
+    def post(self, request):
+        pass
     
 class LivroView(View):
     def get(self, request, *args, **kwargs):
@@ -32,12 +35,13 @@ class EditoraView(View):
         editoras = Editora.objects.all()
         return render(request, 'editora.html',{'editoras': editoras})
     
-class UsarioView(View):
+class UsuarioView(View):
     def get(self, request, *args, **kwargs):
-        leitores = Leitor.objects.all()
+        leitores = Usuario.objects.all()
         return render(request, 'leitor.html',{'leitores': leitores})
     
 class GeneroView(View):
     def get(self, request, *args, **kwargs):
         generos = Genero.objects.all()
         return render(request, 'genero.html', {'generos':generos})
+    
